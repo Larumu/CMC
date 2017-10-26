@@ -1,0 +1,397 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.4' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     17892,        389]
+NotebookOptionsPosition[     17502,        371]
+NotebookOutlinePosition[     17877,        387]
+CellTagsIndexPosition[     17834,        384]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"SistemaP", "[", "niter_", "]"}], " ", ":=", " ", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "Reglas", ",", "ReglaAUsar", ",", " ", "NumeroReglaAUsar", ",", 
+        "iterFin", ",", "membranaRep", ",", "cadena", ",", "i", ",", 
+        "membranaIni", ",", "iter", ",", "sistemaFin", ",", " ", "aux", ",", 
+        "insert", ",", "j", ",", " ", "sistemaP"}], "}"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"sistemaP", " ", "=", " ", 
+        RowBox[{"{", " ", 
+         RowBox[{"2", ",", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"a", ",", "a"}], "}"}], ",", 
+            RowBox[{"{", " ", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"{", "a", "}"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{
+                 "a", ",", "1", ",", "b", ",", "2", ",", "c", ",", "2", ",", 
+                  "c", ",", "2"}], "}"}], ",", "False", ",", "0"}], "}"}], 
+              ",", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"{", 
+                 RowBox[{"a", ",", "a"}], "}"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{"a", ",", "0", ",", "a", ",", "0"}], "}"}], ",", 
+                "False", ",", "0"}], "}"}]}], " ", "}"}], ",", "1"}], "}"}], 
+          ",", "    ", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", "}"}], ",", 
+            RowBox[{"{", "}"}], ",", "2"}], "}"}]}], " ", "}"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"iterFin", " ", "=", " ", "niter"}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"iter", "=", "1"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"aux", "=", 
+        RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"insert", " ", "=", 
+        RowBox[{"{", 
+         RowBox[{"b", ",", "b", ",", "c", ",", "c", ",", "c", ",", "c"}], 
+         "}"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"Reglas", " ", "=", " ", 
+        RowBox[{
+         RowBox[{"sistemaP", "[", 
+          RowBox[{"[", "2", "]"}], "]"}], "[", 
+         RowBox[{"[", "2", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"iterFin", "\[Equal]", "0"}], ",", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{
+          "Print", "[", "\"\<Devolvemos el sistema inicial\>\"", "]"}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"Return", "[", "sistemaP", "]"}], ";"}]}], 
+        "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"While", "[", 
+        RowBox[{
+         RowBox[{"iter", "<=", "iterFin"}], ",", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"membranaIni", " ", "=", " ", 
+            RowBox[{"sistemaP", "[", 
+             RowBox[{"[", "2", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"membranaRep", " ", "=", " ", 
+            RowBox[{"sistemaP", "[", 
+             RowBox[{"[", "3", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"NumeroReglaAUsar", " ", "=", " ", 
+            RowBox[{"RandomInteger", "[", 
+             RowBox[{"{", 
+              RowBox[{"1", ",", "2"}], "}"}], "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"cadena", "=", 
+            RowBox[{
+             RowBox[{"sistemaP", "[", 
+              RowBox[{"[", "2", "]"}], "]"}], "[", 
+             RowBox[{"[", "1", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"ReglaAUsar", " ", "=", " ", 
+            RowBox[{"Reglas", "[", 
+             RowBox[{"[", "NumeroReglaAUsar", "]"}], "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"If", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"Length", "[", 
+               RowBox[{"ReglaAUsar", "[", 
+                RowBox[{"[", "1", "]"}], "]"}], "]"}], "\[Equal]", 
+              RowBox[{"Length", "[", "cadena", "]"}]}], ",", 
+             "\[IndentingNewLine]", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"membranaIni", "[", 
+                RowBox[{"[", "1", "]"}], "]"}], "=", " ", 
+               RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+              RowBox[{
+               RowBox[{"membranaRep", "[", 
+                RowBox[{"[", "1", "]"}], "]"}], "=", "aux"}], ";", 
+              "\[IndentingNewLine]", 
+              RowBox[{
+               RowBox[{"membranaRep", "[", 
+                RowBox[{"[", "1", "]"}], "]"}], "=", 
+               RowBox[{"Sort", "[", 
+                RowBox[{"membranaRep", "[", 
+                 RowBox[{"[", "1", "]"}], "]"}], "]"}]}], ";", 
+              "\[IndentingNewLine]", 
+              RowBox[{"sistemaFin", "=", " ", 
+               RowBox[{"{", 
+                RowBox[{"2", ",", "membranaIni", ",", "membranaRep"}], 
+                "}"}]}], ";", "\[IndentingNewLine]", 
+              RowBox[{"Print", "[", 
+               RowBox[{
+               "\"\<Estamos en la iteracion \>\"", ",", " ", "iter", ",", 
+                " ", "\"\< y es nodo final\>\""}], "]"}], ";", 
+              "\[IndentingNewLine]", 
+              RowBox[{"Return", "[", "sistemaFin", "]"}], ";"}]}], 
+            "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+           RowBox[{"If", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"Length", "[", 
+               RowBox[{"ReglaAUsar", "[", 
+                RowBox[{"[", "1", "]"}], "]"}], "]"}], " ", "<", " ", 
+              RowBox[{"Length", " ", "[", "cadena", "]"}]}], ",", 
+             "\[IndentingNewLine]", 
+             RowBox[{
+              RowBox[{"For", "[", 
+               RowBox[{
+                RowBox[{"j", "=", "1"}], ",", 
+                RowBox[{"j", "\[LessEqual]", 
+                 RowBox[{"Length", "[", "insert", "]"}]}], ",", 
+                RowBox[{"j", "++"}], ",", "\[IndentingNewLine]", 
+                RowBox[{
+                 RowBox[{"aux", "=", 
+                  RowBox[{"Append", "[", 
+                   RowBox[{"aux", ",", 
+                    RowBox[{"insert", "[", 
+                    RowBox[{"[", "j", "]"}], "]"}]}], "]"}]}], ";"}]}], 
+               "\[IndentingNewLine]", "]"}], ";"}]}], "\[IndentingNewLine]", 
+            "]"}], ";", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"membranaRep", "[", 
+             RowBox[{"[", "1", "]"}], "]"}], "=", "aux"}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"membranaRep", "[", 
+             RowBox[{"[", "1", "]"}], "]"}], "=", 
+            RowBox[{"Sort", "[", 
+             RowBox[{"membranaRep", "[", 
+              RowBox[{"[", "1", "]"}], "]"}], "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"sistemaFin", "=", " ", 
+            RowBox[{"{", 
+             RowBox[{"2", ",", "membranaIni", ",", "membranaRep"}], "}"}]}], 
+           ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+           RowBox[{"If", "[", 
+            RowBox[{
+             RowBox[{"iter", " ", "\[Equal]", "iterFin"}], ",", 
+             "\[IndentingNewLine]", 
+             RowBox[{
+              RowBox[{"Print", "[", "\"\<No es nodo final\>\"", "]"}], ";", 
+              "\[IndentingNewLine]", 
+              RowBox[{"Return", "[", "sistemaFin", "]"}], ";"}]}], 
+            "\[IndentingNewLine]", "]"}], ";"}], "\[IndentingNewLine]", ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"iter", "++"}], ";"}]}], "\[IndentingNewLine]", "]"}], 
+       ";"}]}], "\[IndentingNewLine]", "]"}]}], ";"}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"SistemaP", "[", "5", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{
+    "Hemos", " ", "modificado", " ", "la", " ", "estructura", " ", "original",
+      " ", "que", " ", "se", " ", "nos", " ", "da", " ", "en", " ", "las", 
+     " ", "diapositivas", " ", "para", " ", "representar", " ", "el", " ", 
+     "sistema", " ", "P"}], ",", " ", 
+    RowBox[{
+    "resultando", " ", "en", " ", "la", " ", "estructura", " ", "alternativa",
+      " ", "que", " ", "describiremos", " ", "a", " ", 
+     RowBox[{"continuaci\[OAcute]n", ".", " ", "En"}], " ", "la", " ", 
+     "primera", " ", "posici\[OAcute]n", " ", "de", " ", "la", " ", "lista", 
+     " ", "se", " ", "muestra", " ", "i"}], ",", " ", 
+    RowBox[{
+    "la", " ", "membrana", " ", "donde", " ", "se", " ", "dar\[AAcute]", " ", 
+     "el", " ", 
+     RowBox[{"resultado", ".", " ", "En"}], " ", "las", " ", "siguientes", 
+     " ", "posiciones", " ", "tendremos", " ", "tantas", " ", "listas", " ", 
+     "como", " ", "membranas", " ", "tenga", " ", "el", " ", 
+     RowBox[{"sistema", ".", " ", "Dento"}], " ", "de", " ", "cualquiera", 
+     " ", "de", " ", "estas", " ", "listas"}], ",", " ", 
+    RowBox[{"en", " ", "la", " ", "primera", " ", "posici\[OAcute]n"}], ",", 
+    " ", 
+    RowBox[{
+    "tendremos", " ", "la", " ", "cadena", " ", "que", " ", "se", " ", 
+     "encuentra", " ", "dentro", " ", "de", " ", "la", " ", "membrana"}], ",",
+     " ", 
+    RowBox[{
+    "en", " ", "la", " ", "segunda", " ", "posici\[OAcute]n", " ", 
+     "habr\[AAcute]", " ", "una", " ", "lista", " ", "con", " ", "las", " ", 
+     "transiciones", " ", "de", " ", "la", " ", 
+     RowBox[{"membrana", " ", ".", " ", "Cada"}], " ", "transici\[OAcute]n", 
+     " ", "ser\[AAcute]", " ", "una", " ", "lista", " ", "en", " ", "la", " ",
+      "que", " ", "la", " ", "primera", " ", "posici\[OAcute]n", " ", 
+     "aparecer\[AAcute]", " ", "el", " ", "antecedente"}], ",", " ", 
+    RowBox[{
+    "en", " ", "la", " ", "segunda", " ", "posici\[OAcute]n", " ", "el", " ", 
+     "consecuente"}], ",", " ", 
+    RowBox[{"en", " ", "la", " ", "tercera", " ", "posici\[OAcute]n"}], ",", 
+    " ", 
+    RowBox[{
+    "un", " ", "booleano", " ", "que", " ", "indique", " ", "si", " ", "la", 
+     " ", "transici\[OAcute]n", " ", "acaba", " ", "rompiendo", " ", "la", 
+     " ", "membrana", " ", "en", " ", "la", " ", "que", " ", "se", " ", 
+     "encuentra", " ", 
+     RowBox[{"(", "True", ")"}], " ", "o", " ", "no", " ", 
+     RowBox[{"(", "False", ")"}]}], ",", " ", 
+    RowBox[{
+    "y", " ", "la", " ", "cuarta", " ", "y", " ", "\[UAcute]ltima", " ", 
+     "posici\[OAcute]n", " ", "ser\[AAcute]", " ", "un", " ", 
+     "n\[UAcute]mero"}], ",", " ", 
+    RowBox[{"el", " ", "cual"}], ",", " ", 
+    RowBox[{
+    "estar\[AAcute]", " ", "a", " ", "0", " ", "si", " ", "nuncna", " ", 
+     "transici\[OAcute]n", " ", "de", " ", "esa", " ", "membrana", " ", 
+     "tiene", " ", "prioridad"}], ",", " ", 
+    RowBox[{
+    "1", " ", "si", " ", "es", " ", "prioridad", " ", "sobre", " ", "el", " ",
+      "resto", " ", "de", " ", "transiciones", " ", "de", " ", "la", " ", 
+     "membrana"}], ",", " ", 
+    RowBox[{
+    "2", " ", "si", " ", "es", " ", "segunda", " ", "prioridad", " ", "y", 
+     " ", "as\[IAcute]", " ", 
+     RowBox[{"sucesivamente", ".", "\[IndentingNewLine]", "En"}], " ", "la", 
+     " ", "\[UAcute]ltima", " ", "y", " ", "tercera", " ", "posici\[OAcute]n",
+      " ", "de", " ", "la", " ", "membrana"}], ",", " ", 
+    RowBox[{
+    "tendremos", " ", "el", " ", "n\[UAcute]mero", " ", "de", " ", "membrana",
+      " ", "en", " ", "la", " ", "que", " ", 
+     RowBox[{"estamos", "."}]}]}], "\[IndentingNewLine]", " ", 
+   "*)"}]}]}], "Input",
+ CellChangeTimes->{{3.7046198088042626`*^9, 3.704619845554433*^9}, {
+   3.704619885771211*^9, 3.704619931352105*^9}, {3.7046217413708553`*^9, 
+   3.7046217623329325`*^9}, {3.7046218424781547`*^9, 
+   3.7046219289273977`*^9}, {3.704621970378914*^9, 3.704622317698386*^9}, {
+   3.704622488507066*^9, 3.7046225090576553`*^9}, {3.704622549847376*^9, 
+   3.7046226154858065`*^9}, {3.704622681971368*^9, 3.704622732188446*^9}, {
+   3.704623716551237*^9, 3.7046238452605085`*^9}, {3.704624244286374*^9, 
+   3.704624329015602*^9}, {3.7046243726543465`*^9, 3.7046244546837044`*^9}, {
+   3.704624610609036*^9, 3.7046246530889273`*^9}, {3.7046247631864367`*^9, 
+   3.7046248008532867`*^9}, {3.7046252588179255`*^9, 3.704625288889589*^9}, {
+   3.704625451959083*^9, 3.7046254816105986`*^9}, {3.704625529941764*^9, 
+   3.7046256169412727`*^9}, {3.704625765106782*^9, 3.7046257845604663`*^9}, {
+   3.7046259514496317`*^9, 3.7046260490849533`*^9}, {3.7046261000111074`*^9, 
+   3.704626280087047*^9}, 3.7046263464819684`*^9, {3.70462640375298*^9, 
+   3.7046264558040853`*^9}, {3.7046265854788895`*^9, 3.704626727493478*^9}, {
+   3.704626849688428*^9, 3.7046268750089765`*^9}, {3.7046270420521345`*^9, 
+   3.704627068196701*^9}, {3.70462721089032*^9, 3.7046273201824408`*^9}, {
+   3.7046277437582855`*^9, 3.7046278453375483`*^9}, {3.704627928162168*^9, 
+   3.7046279291711197`*^9}, {3.7046280068788347`*^9, 
+   3.7046280163266582`*^9}, {3.704628050139065*^9, 3.704628058130943*^9}, {
+   3.7046280940943174`*^9, 3.704628102937211*^9}, {3.7046281564135056`*^9, 
+   3.7046281626009455`*^9}, {3.704628714432598*^9, 3.704628753713198*^9}, 
+   3.7046287896657343`*^9, {3.704628824305776*^9, 3.7046288430554895`*^9}, 
+   3.7046333226916065`*^9, {3.704633572918892*^9, 3.704633582253747*^9}, {
+   3.704633643576701*^9, 3.704633662064392*^9}, {3.7046337949380875`*^9, 
+   3.7046338192698774`*^9}, {3.7046339310336967`*^9, 3.704633934955476*^9}, {
+   3.704633976642294*^9, 3.7046339826890574`*^9}, {3.704634107843263*^9, 
+   3.7046342317630873`*^9}, {3.7046343511205325`*^9, 
+   3.7046343672296467`*^9}, {3.704634406869622*^9, 3.704634412822649*^9}, {
+   3.704634530648831*^9, 3.7046345964602757`*^9}, {3.704634630334703*^9, 
+   3.7046346681153274`*^9}, {3.704634705677209*^9, 3.704634760129425*^9}, {
+   3.7046349020958805`*^9, 3.704634913455076*^9}, {3.704635060733842*^9, 
+   3.704635143268643*^9}, {3.704635188283534*^9, 3.7046352370327635`*^9}, {
+   3.704635353077692*^9, 3.7046353612182207`*^9}, {3.704635420548323*^9, 
+   3.7046354209943047`*^9}, {3.7046358957593174`*^9, 3.70463595257089*^9}, {
+   3.7046360673191195`*^9, 3.704636068851079*^9}, {3.704636179595209*^9, 
+   3.7046362103886995`*^9}, {3.704636240812163*^9, 3.7046362500620112`*^9}, {
+   3.704636383298452*^9, 3.704636420125998*^9}, {3.7046365050275526`*^9, 
+   3.7046365214092894`*^9}, 3.7046365722344103`*^9, 3.704636638799302*^9, {
+   3.7046366880304537`*^9, 3.7046367277678027`*^9}, {3.7046367714660397`*^9, 
+   3.7046367768989425`*^9}, {3.704636872851303*^9, 3.704636872982317*^9}, {
+   3.70464412891551*^9, 3.7046441297123594`*^9}, {3.7046441816954117`*^9, 
+   3.704644253943493*^9}, {3.704649036823853*^9, 3.704649053799917*^9}, {
+   3.7046492020018044`*^9, 3.704649209829689*^9}, {3.704649270019702*^9, 
+   3.704649306176507*^9}, {3.7046502619425564`*^9, 3.704650262380054*^9}, {
+   3.704650310428243*^9, 3.704650321068575*^9}, {3.7047017698269925`*^9, 
+   3.7047018552305574`*^9}, {3.704701957829808*^9, 3.7047019579618096`*^9}, {
+   3.7047020092099495`*^9, 3.704702090073575*^9}, {3.704702343844219*^9, 
+   3.704702343978241*^9}, {3.704739668764144*^9, 3.704739697920018*^9}, {
+   3.7047729088808327`*^9, 3.704772909068353*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Estamos en la iteracion \"\>", "\[InvisibleSpace]", "3", 
+   "\[InvisibleSpace]", "\<\" y es nodo final\"\>"}],
+  SequenceForm["Estamos en la iteracion ", 3, " y es nodo final"],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.7047020825447164`*^9, {3.7047021231210175`*^9, 3.7047021255629883`*^9}, 
+   3.704702347349695*^9, {3.7047729152714148`*^9, 3.7047729188964214`*^9}, {
+   3.704773040208458*^9, 3.7047730463959475`*^9}, 3.7047730917707863`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"2", ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", "a", "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+          "a", ",", "1", ",", "b", ",", "2", ",", "c", ",", "2", ",", "c", 
+           ",", "2"}], "}"}], ",", "False", ",", "0"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"a", ",", "a"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"a", ",", "0", ",", "a", ",", "0"}], "}"}], ",", "False", 
+         ",", "0"}], "}"}]}], "}"}], ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "b", ",", "b", ",", "b", ",", "b", ",", "c", ",", "c", ",", "c", ",", 
+       "c", ",", "c", ",", "c", ",", "c", ",", "c"}], "}"}], ",", 
+     RowBox[{"{", "}"}], ",", "2"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.7047020825557175`*^9, {3.7047021231520176`*^9, 3.7047021255759892`*^9}, 
+   3.7047023474037037`*^9, {3.7047729152870607`*^9, 3.7047729188964214`*^9}, {
+   3.704773040208458*^9, 3.7047730463959475`*^9}, 3.7047730917707863`*^9}]
+}, Open  ]]
+},
+WindowSize->{1366, 685},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+Magnification:>1.2 Inherited,
+FrontEndVersion->"10.4 para Microsoft Windows (64-bit) (April 11, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 15191, 301, 1795, "Input"],
+Cell[15774, 325, 506, 9, 26, "Print"],
+Cell[16283, 336, 1203, 32, 93, "Output"]
+}, Open  ]]
+}
+]
+*)
+
